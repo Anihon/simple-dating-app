@@ -3,32 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Dating App</title>
+    <title>Cheeky Dating App</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
-
-    <!-- Landing Page -->
-    <div id="landing-page" class="text-center">
-        <h1 class="text-2xl font-bold text-gray-800 mb-4">"The best relationships never start because of approach anxiety."</h1>
-        <button id="get-started" class="bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600">
+    <!-- Pages -->
+    <div id="landing-page" class="page text-center">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">"The best relationships never start because people have approach anxiety."</h1>
+        <button data-next="page-1" class="navigate-button bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600">
             Get Started
         </button>
     </div>
 
-    <!-- Are You Single Page -->
-    <div id="question-page" class="hidden text-center">
-        <h2 class="text-xl font-semibold text-gray-800 mb-6">Are you single?</h2>
+    <div id="page-1" class="page hidden text-center">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">Enter your name (optional):</h2>
+        <input id="name-input" type="text" placeholder="Your name" class="border rounded-lg px-4 py-2 mb-4">
         <div class="flex justify-center space-x-4">
-            <button class="bg-green-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-600" id="yes-button">
+            <button data-next="page-2" class="navigate-button bg-green-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-600">
+                Enter
+            </button>
+            <button data-next="page-2" class="navigate-button bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600">
+                Skip
+            </button>
+        </div>
+    </div>
+
+    <div id="page-2" class="page hidden text-center">
+        <h2 id="greeting" class="text-xl font-semibold text-gray-800 mb-6"></h2>
+        <p class="text-gray-700 mb-4">What do you think of this way of indirectly saying you’re cute and beautiful? 😆</p>
+        <div class="flex justify-center space-x-4">
+            <button data-next="page-3" class="navigate-button bg-green-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-600" data-response="Love it">
+                Love it
+            </button>
+            <button data-next="page-3" class="navigate-button bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600" data-response="Interesting">
+                Interesting
+            </button>
+        </div>
+    </div>
+
+    <div id="page-3" class="page hidden text-center">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">It might seem a little forward to ask... Are you single?</h2>
+        <div class="flex justify-center space-x-4">
+            <button data-next="page-4" class="navigate-button bg-green-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-600" data-response="Yes">
                 Yes
             </button>
-            <button class="bg-red-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-red-600" id="no-button">
+            <button data-next="page-5" class="navigate-button bg-red-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-red-600" data-response="No">
                 No
             </button>
         </div>
     </div>
+
+    <div id="page-4" class="page hidden text-center">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">Perfect! Well, we need to fix that, don’t we? I was wondering if I could ask you out for coffee or something...</h2>
+        <button data-next="summary-page" class="navigate-button bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600">
+            Back to Start
+        </button>
+    </div>
+
+    <div id="page-5" class="page hidden text-center">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">Ah, the good ones are always taken... I’ll just keep this a friendly chat then.</h2>
+        <button data-next="summary-page" class="navigate-button bg-blue-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-blue-600">
+            Back to Start
+        </button>
+    </div>
+
+    <div id="summary-page" class="page hidden text-center">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Your Responses</h2>
+        <ul id="response-summary" class="list-disc text-gray-700 mb-6 text-left"></ul>
+        <p class="text-gray-600">Thank you for sharing your responses!</p>
+    </div>
+    
 
     <script src="app.js"></script>
 </body>
